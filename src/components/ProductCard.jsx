@@ -1,20 +1,23 @@
+import { useState } from "react";
 export default function ProductCard({ product }) {
-  let currentImageIndex = 0;
+  const [currentImageIndex, setIndex] = useState (0);
   let itemsInCart = 0;
 
   const handleAddToCartClick = () => {
     itemsInCart++;
     alert(`you added ${itemsInCart}`);
   };
+
+  
   return (
     <>
       <div id="image-carousel">
         <img
-          src={product.imageUrls[currentImageIndex] + " " + product.name}
+          src={product.imageUrls[currentImageIndex]}
           alt={product.name}
         />
-        <button>Next</button>
-        <button>Previous</button>
+        <button onClick={() => setIndex(currentImageIndex + 1)}>Next</button>
+        <button onClick={() => setIndex(currentImageIndex - 1)}>Previous</button>
       </div>
 
       <h3>{product.name}</h3>
