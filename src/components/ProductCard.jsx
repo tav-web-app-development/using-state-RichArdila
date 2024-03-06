@@ -16,8 +16,14 @@ export default function ProductCard({ product }) {
           src={product.imageUrls[currentImageIndex]}
           alt={product.name}
         />
-        <button onClick={() => setIndex(currentImageIndex + 1)}>Next</button>
-        <button onClick={() => setIndex(currentImageIndex - 1)}>Previous</button>
+        <button 
+          onClick={() => setIndex(currentImageIndex + 1)}
+          disabled={currentImageIndex === product.imageUrls.length - 1}
+          >Next</button>
+        <button 
+          onClick={() => setIndex(currentImageIndex - 1)}
+          disabled={currentImageIndex === 0}
+        >Previous</button>
       </div>
 
       <h3>{product.name}</h3>
