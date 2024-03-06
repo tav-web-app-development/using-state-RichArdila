@@ -1,6 +1,7 @@
 import { useState } from "react";
 export default function ProductCard({ product }) {
   const [currentImageIndex, setIndex] = useState (0);
+  const [showMore, setShowMore] = useState(false);
   let itemsInCart = 0;
 
   const handleAddToCartClick = () => {
@@ -27,8 +28,10 @@ export default function ProductCard({ product }) {
       </div>
 
       <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <button>Show Description</button>
+      {showMore && <p>{product.description}</p>}
+      <button onClick={() => setShowMore(!showMore)}>
+      {showMore ? "Hide Description" : "Show Description"}
+      </button>
       <div className="price">${product.price}</div>
 
       <button onClick={handleAddToCartClick}>Add to Cart</button>
